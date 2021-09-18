@@ -1,41 +1,51 @@
 <template>
-  <base-card>
-    <user-post-header
-      name="Jose Luis"
-      date="Sunday, June 20, 2021 at 1:00 PM"
-      imgUrl="https://res.cloudinary.com/guerracode/image/upload/v1627782420/danAbramov_jdbpjo.jpg"
-    />
+  <article class="container">
+    <base-card>
+      <user-post-header :name="userName" :date="date" :imgUrl="userImageUrl" />
 
-    <figure>
-      <img
-        src="https://res.cloudinary.com/guerracode/image/upload/v1631826126/bugatti_apckpv.jpg"
-        alt="post"
-      />
-    </figure>
-    <div class="text-container">
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque
-        expedita fugiat, perferendis deleniti, modi, aperiam quidem dolorum
-        debitis harum eos sapiente maxime sunt hic omnis molestias nobis
-        blanditiis doloribus veniam.
-      </p>
-    </div>
+      <figure>
+        <img :src="postImageUrl" alt="post" />
+      </figure>
+      <div class="text-container">
+        <p>
+          {{ text }}
+        </p>
+      </div>
 
-    <base-button>Comment</base-button>
-  </base-card>
+      <base-button v-if="!post" @click="handleClick()">Comment</base-button>
+    </base-card>
+  </article>
 </template>
 
 <script>
 import UserPostHeader from '../atoms/UserPostHeader.vue';
 
 export default {
+  props: {
+    id: String,
+    text: String,
+    date: String,
+    userName: String,
+    postImageUrl: String,
+    userImageUrl: String,
+    post: Boolean,
+  },
   components: {
     UserPostHeader,
+  },
+  methods: {
+    handleClick() {
+      this.$router.push(`/posts/${this.id}`);
+    },
   },
 };
 </script>
 
 <style scoped>
+.container {
+  margin-bottom: 20px;
+}
+
 figure {
   position: relative;
   display: flex;

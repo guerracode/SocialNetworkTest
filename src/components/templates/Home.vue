@@ -6,7 +6,6 @@
 
 <script>
 import PostsFeed from '../organisms/PostsFeed.vue';
-
 export default {
   components: {
     PostsFeed,
@@ -17,8 +16,6 @@ export default {
 
 <style scoped>
 .home {
-  background: rgb(233, 233, 233);
-  min-height: 100vh;
   padding: 20px;
 }
 </style>
