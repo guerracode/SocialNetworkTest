@@ -14,27 +14,26 @@
   </p>
 </p>
 
-
 ### Build with
 
 These are the main technologies used in the project:
 
--  JavaScript
--  Vue
--  CSS
--  HTML
+- JavaScript
+- Vue
+- CSS
+- HTML
 
 ## Project Images
 
 <img src="./src/assets/home.png" alt="screenshot">
-<img src="../src/assets/post.png" alt="screenshot">
+<img src="./src/assets/post.png" alt="screenshot">
 
 <!-- GETTING STARTED -->
 
 ## Getting Started
 
--  install all project dependencies with `npm install`
--  start the development server with `npm run serve`
+- install all project dependencies with `npm install`
+- start the development server with `npm run serve`
 
 <!-- CONTRIBUTING -->
 </br>
