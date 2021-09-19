@@ -2,7 +2,7 @@
   <div class="container">
     <figure><img :src="imgUrl" alt="User" /></figure>
     <div>
-      <h5>{{ name }}</h5>
+      <h5>{{ id }} {{ name }}</h5>
       <p>{{ date }}</p>
     </div>
   </div>
@@ -11,6 +11,7 @@
 <script>
 export default {
   props: {
+    id: String,
     name: String,
     date: String,
     imgUrl: String,

@@ -1,7 +1,12 @@
 <template>
   <article class="container">
     <base-card>
-      <user-post-header :name="userName" :date="date" :imgUrl="userImageUrl" />
+      <user-post-header
+        :id="id"
+        :name="userName"
+        :date="date"
+        :imgUrl="userImageUrl"
+      />
 
       <figure>
         <img :src="postImageUrl" alt="post" />

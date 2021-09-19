@@ -4,7 +4,7 @@
       <comment
         v-for="res in comments"
         :key="res?.id"
-        :text="res.text"
+        :text="res?.text"
         :commentColor="grayLight"
       />
     </div>
@@ -15,7 +15,14 @@
         placeholder="Type your comment"
         :inputColor="grayLight"
       />
-      <button>SEND</button>
+      <button
+        @click="
+          newComment(this.message);
+          this.message = '';
+        "
+      >
+        SEND
+      </button>
     </div>
   </div>
 </template>
@@ -34,11 +41,13 @@ export default {
   },
   props: {
     comments: Array,
+    newComment: Function,
   },
   components: {
     Comment,
     BaseInput,
   },
+  methods: {},
 };
 </script>,
     BaseButton

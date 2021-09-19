@@ -15,16 +15,37 @@
 
 <script>
 import PostCard from '../molecules/PostCard.vue';
-import data from '../../../util/data';
+import dataExample from '../../../util/data';
 
 export default {
   data() {
     return {
-      data,
+      data: [],
     };
   },
   components: {
     PostCard,
+  },
+  methods: {
+    fillData() {
+      const localData = localStorage.getItem('data');
+      if (!localData) {
+        const filledData = Array(10)
+          .fill(dataExample)
+          .map((item, index) => ({
+            ...item,
+            id: index.toString(),
+          }));
+
+        localStorage.setItem('data', JSON.stringify(filledData));
+        this.data = filledData;
+      } else {
+        this.data = JSON.parse(localData);
+      }
+    },
+  },
+  mounted() {
+    this.fillData();
   },
 };
 </script>

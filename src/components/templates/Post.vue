@@ -8,7 +8,7 @@
       :userImageUrl="postData?.userImageUrl"
       :post="true"
     />
-    <comments-box :comments="postData?.comments" />
+    <comments-box :comments="postData?.comments" :newComment="newComment" />
   </section>
 </template>
 
@@ -16,22 +16,43 @@
 import PostCard from '../molecules/PostCard.vue';
 import CommentsBox from '../organisms/CommentsBox.vue';
 
-import data from '../../../util/data';
+// import data from '../../../util/data';
 
 export default {
   mounted() {
     this.urlData = this.$route.params.id;
+    this.localData = JSON.parse(localStorage.getItem('data'));
     this.postData = this.getPostData();
   },
   data() {
     return {
       urlData: '',
       postData: {},
+      localData: [],
     };
   },
   methods: {
     getPostData() {
-      return data.filter((item) => item.id === this.urlData)[0];
+      return this.localData.filter((item) => item.id === this.urlData)[0];
+    },
+    newComment(message) {
+      this.localData = this.localData.map((item) => {
+        if (item.id === this.postData.id) {
+          return {
+            ...item,
+            comments: [
+              ...item.comments,
+              {
+                id: item.comments.length + 1,
+                text: message,
+              },
+            ],
+          };
+        }
+        return item;
+      });
+      this.postData = this.getPostData();
+      localStorage.setItem('data', JSON.stringify(this.localData));
     },
   },
   components: {
