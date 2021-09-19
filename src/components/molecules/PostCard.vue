@@ -17,7 +17,9 @@
         </p>
       </div>
 
-      <base-button v-if="!post" @click="handleClick()">Comment</base-button>
+      <base-button v-if="!post" @click="handleClick()"
+        >Comment ({{ commentsNumber }})</base-button
+      >
     </base-card>
   </article>
 </template>
@@ -33,6 +35,7 @@ export default {
     userName: String,
     postImageUrl: String,
     userImageUrl: String,
+    commentsNumber: Number,
     post: Boolean,
   },
   components: {

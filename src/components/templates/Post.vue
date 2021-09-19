@@ -1,6 +1,7 @@
 <template>
   <section class="post">
     <post-card
+      :id="postData?.id"
       :text="postData?.text"
       :date="postData?.date"
       :postImageUrl="postData?.postImageUrl"
